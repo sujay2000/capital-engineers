@@ -1,94 +1,215 @@
+/* Products.css */
+
 /* Carousel container */
-.products-wrapper {
+.carousel-container {
   position: relative;
-  padding: 2rem 0;
+  overflow: visible; /* Allow arrows to show outside */
+  padding: 0 2rem; /* Space for arrows */
+  margin: 0 2rem; /* Additional margin for better spacing */
 }
 
-/* Scrollable flexbox for the cards */
+/* Carousel wrapper to handle overflow */
+.products-carousel-wrapper {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* Main carousel wrapper */
 .products-carousel {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  transition: transform 0.6s ease-in-out;
+  width: calc(100% * var(--total-slides, 1));
+}
+
+/* Each slide containing multiple cards */
+.carousel-slide {
+  display: flex;
   gap: 1.5rem;
-  padding: 1rem 3rem;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 1rem 0;
 }
 
 /* Each product card in the carousel */
 .product-slide {
-  flex: 0 0 calc(33.333% - 1rem);
-  scroll-snap-align: start;
-  transition: transform 0.3s ease;
+  flex: 0 0 calc(33.333% - 1rem); /* 3 cards on desktop */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-slide:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  z-index: 2;
 }
 
-/* Hide scrollbar */
-.products-carousel::-webkit-scrollbar {
+/* Responsive card sizing */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .product-slide {
+    flex: 0 0 calc(50% - 0.5rem); /* 2 cards on tablet */
+  }
+  
+  .carousel-slide {
+    gap: 1rem;
+  }
+  
+  .carousel-container {
+    padding: 0 1.5rem;
+    margin: 0 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-slide {
+    flex: 0 0 100%; /* 1 card on mobile */
+  }
+  
+  .carousel-slide {
+    gap: 0;
+    padding: 0.5rem 0;
+  }
+  
+  .carousel-container {
+    padding: 0 1rem;
+    margin: 0 1rem;
+  }
+}
+
+/* Arrow positioning adjustments */
+@media (max-width: 768px) {
+  .carousel-container button {
+    left: -1rem !important;
+    right: -1rem !important;
+    padding: 0.75rem;
+  }
+  
+  .carousel-container button:last-child {
+    right: -1rem !important;
+    left: auto !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .carousel-container button {
+    padding: 1rem;
+  }
+}
+
+/* Animation for fade in */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Enhanced hover effects for navigation buttons */
+.carousel-container button {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.carousel-container button:hover {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Progress bar and pagination enhancements */
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.pagination-dot:hover {
+  transform: scale(1.2);
+}
+
+.pagination-dot.active {
+  transform: scale(1.3);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Smooth entrance animation for product cards */
+.product-slide {
+  opacity: 0;
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.carousel-slide:nth-child(1) .product-slide:nth-child(1) { animation-delay: 0.1s; }
+.carousel-slide:nth-child(1) .product-slide:nth-child(2) { animation-delay: 0.2s; }
+.carousel-slide:nth-child(1) .product-slide:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Auto-slide pause indicator */
+.carousel-container:hover .products-carousel {
+  animation-play-state: paused;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .products-carousel {
+    transition: none;
+  }
+  
+  .product-slide {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Remove touch indicators for mobile since we have proper controls */
+.carousel-container::after {
   display: none;
 }
-.products-carousel {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
 
-/* Scroll buttons */
-.scroll-btn {
+/* Ensure arrows are always visible and properly positioned */
+.carousel-container button {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #2563eb; /* Tailwind blue-600 */
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 9999px;
-  cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s ease;
+  z-index: 20;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.scroll-btn:hover {
-  background-color: #1d4ed8; /* Tailwind blue-700 */
-}
-
-.scroll-left {
-  left: 1rem;
-}
-
-.scroll-right {
-  right: 1rem;
-}
-
-/* Bullet for features */
-.feature-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: #2563eb;
-  border-radius: 50%;
-  margin-right: 8px;
-  flex-shrink: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .product-slide {
-    flex: 0 0 calc(50% - 1rem);
+/* Better responsive arrow positioning */
+@media (max-width: 640px) {
+  .carousel-container {
+    padding: 0 0.5rem;
+    margin: 0 0.5rem;
   }
-}
-
-@media (max-width: 768px) {
-  .product-slide {
-    flex: 0 0 100%;
-    padding: 0 1rem;
-  }
-
-  .scroll-btn {
-    display: none;
-  }
-
-  .products-carousel {
-    padding: 1rem;
+  
+  .carousel-container button {
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
   }
 }
