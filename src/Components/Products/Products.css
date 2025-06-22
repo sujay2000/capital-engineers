@@ -1,0 +1,94 @@
+/* Carousel container */
+.products-wrapper {
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* Scrollable flexbox for the cards */
+.products-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  padding: 1rem 3rem;
+}
+
+/* Each product card in the carousel */
+.product-slide {
+  flex: 0 0 calc(33.333% - 1rem);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+.product-slide:hover {
+  transform: translateY(-5px);
+}
+
+/* Hide scrollbar */
+.products-carousel::-webkit-scrollbar {
+  display: none;
+}
+.products-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Scroll buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #2563eb; /* Tailwind blue-600 */
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: #1d4ed8; /* Tailwind blue-700 */
+}
+
+.scroll-left {
+  left: 1rem;
+}
+
+.scroll-right {
+  right: 1rem;
+}
+
+/* Bullet for features */
+.feature-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .product-slide {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-slide {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+  }
+
+  .scroll-btn {
+    display: none;
+  }
+
+  .products-carousel {
+    padding: 1rem;
+  }
+}

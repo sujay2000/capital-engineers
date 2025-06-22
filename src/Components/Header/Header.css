@@ -1,0 +1,184 @@
+/* Header Styles */
+.header-dropdown {
+  z-index: 1000;
+}
+
+/* Desktop Hover Dropdown */
+.dropdown-container:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-container:hover .dropdown-menu .chevron-down {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  z-index: 1000;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+  filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Smooth transitions for all interactive elements */
+.dropdown-container .dropdown-menu {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-container:hover .dropdown-menu {
+  animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 1024px) {
+  .company-name {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-name {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  
+  /* Mobile menu improvements */
+  .mobile-menu-container {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #e5e7eb;
+  }
+}
+
+@media (max-width: 640px) {
+  .company-name {
+    font-size: 0.9rem;
+  }
+}
+
+/* Enhanced mobile dropdown animations */
+.mobile-dropdown-enter {
+  max-height: 0;
+  opacity: 0;
+}
+
+.mobile-dropdown-enter-active {
+  max-height: 300px;
+  opacity: 1;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.mobile-dropdown-exit {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.mobile-dropdown-exit-active {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+/* Better mobile menu button */
+@media (max-width: 1024px) {
+  .mobile-menu-button {
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-menu-button:hover {
+    background-color: #f3f4f6;
+    transform: scale(1.05);
+  }
+}
+
+/* Desktop menu item hover effects */
+@media (min-width: 1024px) {
+  .nav-item {
+    position: relative;
+    padding: 0.5rem 0;
+  }
+  
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-item:hover::after {
+    width: 100%;
+  }
+}
+
+/* Improved dropdown item styling */
+.dropdown-menu a {
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown-menu a::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.dropdown-menu a:hover::before {
+  left: 100%;
+}
+
+/* Header shadow enhancement */
+header {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Logo hover effect */
+.company-name {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.company-name:hover {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.02);
+}
