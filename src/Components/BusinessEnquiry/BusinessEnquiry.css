@@ -97,6 +97,45 @@
   height: 20px;
   width: 20px;
 }
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+}
+
+.country-code {
+  background: #f8f9fa;
+  padding: 10px 12px;
+  border-right: 1px solid #e0e0e0;
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
+}
+
+.phone-input-wrapper input {
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  flex: 1;
+  font-size: 14px;
+}
+
+.phone-input-wrapper input:focus {
+  outline: none;
+}
+
+.phone-input-wrapper:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Make sure the wrapper takes full width */
+.form-group .phone-input-wrapper {
+  width: 100%;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
