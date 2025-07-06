@@ -1,6 +1,7 @@
 // src/pages/AboutUsPage.js
 import React from 'react';
 import './AboutUs.css';
+import stackImage from '../../assets/images/Kartik.jpeg';
 
 const AboutUs = () => {
   return (
@@ -49,19 +50,9 @@ const AboutUs = () => {
         <h3 className="section-title">Leadership Team</h3>
         <div className="leaders">
           <div className="leader-card">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Leader 1" />
-            <h4>Arun Menon</h4>
+            <img src={stackImage}></img>
+            <h4>Kartik BABU</h4>
             <p>Founder & CEO</p>
-          </div>
-          <div className="leader-card">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Leader 2" />
-            <h4>Priya Nair</h4>
-            <p>Head of Operations</p>
-          </div>
-          <div className="leader-card">
-            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Leader 3" />
-            <h4>Ravi Kumar</h4>
-            <p>Technical Director</p>
           </div>
         </div>
       </div>

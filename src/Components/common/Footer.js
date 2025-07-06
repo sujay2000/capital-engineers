@@ -1,15 +1,15 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Why Us', path: '/why-us' },
+    { name: 'Contact', path: '/contact' }
   ];
 
   const products = [
@@ -43,17 +43,18 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="h-5 w-5 text-blue-400 mr-3" />
-                <span className="text-gray-300">+91 (XXX) XXX-XXXX</span>
+                <span className="text-gray-300">+91 6235552714</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                <span className="text-gray-300">info@capital-engineers.com</span>
+                <span className="text-gray-300">capitalengineersktym@gmail.com</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-blue-400 mr-3 mt-1" />
                 <span className="text-gray-300">
-                  123 Engineering Street,<br />
-                  Tech City, State 12345, India
+                  Capital engineers and consultants<br />
+                  Pothenpuram junction<br/>
+                  Pampady meenadom road, pambady, Kottayam, 686502 
                 </span>
               </div>
             </div>
@@ -65,12 +66,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <Link 
+                    to={link.path}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -82,12 +83,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {products.map((product, index) => (
                 <li key={index}>
-                  <a 
-                    href="#products" 
+                  <Link 
+                    to="/products"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {product}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -99,12 +100,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a 
-                    href="#contact" 
+                  <Link 
+                    to="/contact"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

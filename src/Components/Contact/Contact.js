@@ -141,8 +141,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-blue-400 mr-4 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold mb-1">Phone</h4>
-                  <p className="text-blue-100">+91 (XXX) XXX-XXXX</p>
-                  <p className="text-blue-100">+91 (XXX) XXX-XXXX</p>
+                  <p className="text-blue-100">+91 6235552714</p>
                 </div>
               </div>
               
@@ -150,8 +149,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-blue-400 mr-4 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
-                  <p className="text-blue-100">info@capital-engineers.com</p>
-                  <p className="text-blue-100">sales@capital-engineers.com</p>
+                  <p className="text-blue-100">capitalengineersktym@gmail.com</p>
                 </div>
               </div>
               
@@ -160,9 +158,9 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold mb-1">Address</h4>
                   <p className="text-blue-100">
-                    123 Engineering Street,<br />
-                    Tech City, State 12345<br />
-                    India
+                     Capital engineers and consultants,<br />
+                    Pothenpuram junction<br />
+                    Pampady meenadom road,pambady,Kottayam,686502 
                   </p>
                 </div>
               </div>
